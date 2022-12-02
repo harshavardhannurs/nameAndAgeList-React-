@@ -1,0 +1,21 @@
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+label{
+  display:block;
+  margin-top: 10px;
+  font-size: 1.3rem;
+}
+
+.entry-field{
+  padding:5%;
+  background-color: bisque;
+  border-radius: 1%;
+  box-shadow: 2px 2px 10px 2px black;
+}
+
+input{
+  padding:1%;
+  font-size: 1.2rem;
+}

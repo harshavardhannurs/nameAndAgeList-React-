@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Entry from './components/Entry';
+import Item from './components/Item'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(){
+  const [items, setItems] = React.useState([]);
+
+  function addItem(item){
+    setItems((prev)=>{
+      return [...prev, item];
+    })
+  }
+
+  function deleteItem(itemId){
+    setItems((prev)=>{
+      return prev.filter((item)=>{
+        return item.id !== itemId;
+      })
+    })
+  }
+
+  return <div style={{padding:"10%"}}>
+  <Entry onAdd={addItem}/>
+  {items.map((item)=>{
+    return <Item onDelete={deleteItem} key={item.id} id={item.id} name={item.name} age={item.age} />
+  })}
+  </div>
 }
 
 export default App;
