@@ -1,0 +1,16 @@
+.add-item-container{
+  text-align: center;
+  font-size: 3rem;
+}
+
+.add-item{
+  background-color:#E7C139;
+  padding:2% 10%;
+  border-radius: 10rem;
+  font-size: 3rem;
+  
+}
+
+.add-item:hover{
+  background-color:#f8ca00;
+}

@@ -1,15 +1,14 @@
 import styled from 'styled-components'
 
 const Button = styled.button`
-display:block;
-background-color:rgb(255, 242, 196);
+display:span;
+background-color: #E7B812;
 margin-top:10px;
-padding:1%;
-width:20%;
-font-size:1.1rem;
+font-size:1rem;
+border-radius:100%;
 
 &:hover{
-  background-color:lemonchiffon;
+  background-color:#f8ca00;
 }
 `
 

@@ -10,7 +10,7 @@ function Item(props){
 
   return <ItemStyle>
     <button onClick={handleRemove}>🗑️</button>
-    <h3>{props.name} ({props.age})</h3>
+    <h3>{`${props.name} ${props.age}`}</h3>
   </ItemStyle>
 }
 

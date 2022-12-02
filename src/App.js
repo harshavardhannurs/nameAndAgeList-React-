@@ -1,6 +1,7 @@
 import React from 'react';
 import Entry from './components/Entry';
 import Item from './components/Item'
+import './App.css'
 
 function App(){
   const [items, setItems] = React.useState([]);
@@ -19,7 +20,7 @@ function App(){
     })
   }
 
-  return <div style={{padding:"10%"}}>
+  return <div className="app-part">
   <Entry onAdd={addItem}/>
   {items.map((item)=>{
     return <Item onDelete={deleteItem} key={item.id} id={item.id} name={item.name} age={item.age} />
