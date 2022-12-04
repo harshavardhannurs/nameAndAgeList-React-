@@ -12,8 +12,10 @@ function Entry(props) {
   })
 
   const [expand, setExpand] = useState(false);
+  const [error, setError] = useState(false);
 
   function inputChangeHandler(event){
+    setError(false);
     const changeField = event.target.name
     const changeValue = event.target.value;
     setEntry((prev)=>{
@@ -23,6 +25,10 @@ function Entry(props) {
 
   function submitHandler(event){
     event.preventDefault();
+    if(entry.name.trim().length === 0 || entry.age.trim().length===0){
+      setError(true);
+      return;
+    }
     props.onAdd(entry);
     setEntry({
       id:Math.random().toString(),
@@ -43,11 +49,11 @@ function Entry(props) {
       <div>
         <div className="entry-field-part">
           <label>Your name</label>
-          <input className="input-field" type="text" name="name" onChange={inputChangeHandler} value={entry.name} autoComplete="off" />
+          <input className="input-field" style={{borderColor:error&&"red"}} type="text" name="name" onChange={inputChangeHandler} value={entry.name} autoComplete="off" />
         </div>
         <div className="entry-field-part">
           <label>Your age</label>
-          <input className="input-field" type="number" name="age" min="0" onChange={inputChangeHandler} value={entry.age} autoComplete="off" />
+          <input className="input-field"  style={{borderColor:error&&"red"}} type="number" name="age" min="0" onChange={inputChangeHandler} value={entry.age} autoComplete="off" />
         </div>
       </div>
       <div>
