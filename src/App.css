@@ -1,3 +1,6 @@
 .app-part{
   padding:2%;
+  display: flex-column;
+  justify-content: center;
+  align-items: center;
 }

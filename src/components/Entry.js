@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "./Entry.css";
 import Button from '../UI/Button'
 import AddItem from './AddItem'
+import ErrorModal from "../UI/ErrorModal";
 
 function Entry(props) {
 
@@ -12,7 +13,8 @@ function Entry(props) {
   })
 
   const [expand, setExpand] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState();
+
 
   function inputChangeHandler(event){
     setError(false);
@@ -26,9 +28,19 @@ function Entry(props) {
   function submitHandler(event){
     event.preventDefault();
     if(entry.name.trim().length === 0 || entry.age.trim().length===0){
-      setError(true);
+      setError({
+        title:"Invalid input",
+        message:"Enter valid name and age"
+        
+      });
       return;
     }
+    if(entry.age < 1){
+      setError({
+        title:"Invalid age",
+        message:"Enter a valid age"
+      })
+    } 
     props.onAdd(entry);
     setEntry({
       id:Math.random().toString(),
@@ -42,7 +54,13 @@ function Entry(props) {
     setExpand(true);
   }
 
+  function errorHandler(){
+    setError(null);
+  }
+
   return (
+    <div>
+    {error && <ErrorModal onConfirm={errorHandler} title={error.title} message={error.message} />}
     <div className="entry-field">
     {!expand ? <AddItem toAdd={expandHandler} /> :
      <form onSubmit={submitHandler}>
@@ -62,6 +80,7 @@ function Entry(props) {
       </div> 
       </form>
     }
+    </div>
     </div>
   );
 }
