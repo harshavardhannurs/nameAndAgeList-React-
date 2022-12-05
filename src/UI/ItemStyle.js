@@ -7,7 +7,7 @@ const ItemStyle = styled.div`
   padding: 1% 5% ;
   margin-top:1rem;
   border-radius: 1.2rem;
-  box-shadow: 5px 5px 10px 3px grey;
+  box-shadow: 5px 5px 10px 3px black;
   color:#E7C139;
 
   & button{
